@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="prerana" id="1" runOnChange="false">
+        <createTable tableName="user"
+                     remarks="The users of the college.users can be student or faculty or admin.">
+            <column name="id" type="int"  autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="USER_PK_ID"
+          />
+            </column>
+            <column name="username" type="varchar(255)">
+                
+            </column>
+            <column name="fname" type="varchar(255)"
+                    remarks="The first name of the user."/>
+            <column name="lname" type="varchar(255)"
+                    remarks="The last name of the user."/>
+            <column name="phone_no" type="int"
+                    remarks="contact number of user"/>
+            <column name="email_id" type="varchar(255)"
+                    remarks="email id of user"/>
+            <column name="password" type="varchar(255)"
+                    remarks="password of user in encrypted format "/>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255))"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+        </createTable>
+        <createTable tableName="role"
+                     remarks="The role of the user .">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="ROLE_PK_ID"
+                />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)"
+                    remarks="The name of the role."/>
+            <column name="description" type="varchar(255)"
+                    remarks="The description of the role."/>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255)"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+        </createTable>
+        <createTable tableName="feedback_on"
+                     remarks="The feedback from user .">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="FEEDBACK_ON_PK_ID" />
+            </column>
+            <column name="topic_facilitator_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ratings" type="int"/>
+            <column name="comments" type="longtext"
+                    remarks="The comments from user ."/>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255)"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+        </createTable>
+        <createTable tableName="permissions">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PERMISSIONS_PK_ID" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)"
+                    remarks="The name of the role."/>
+            <column name="description" type="varchar(255)"
+                    remarks="The description of the role."/>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255)"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+        </createTable>
+        <createTable tableName="role_permission">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="ROLE_PERM_PK_ID" />
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false" />
+                
+            </column>
+            <column name="permission_id" type="int">
+                <constraints nullable="false" />
+                
+            </column>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255)"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+            
+        </createTable>
+        <createTable tableName="user_role">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="USER_ROLE_PK_ID" />
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false" />
+                
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false" />
+                
+            </column>
+            <column name="created_by" type="varchar(255)"
+                    remarks="name of the person who has created this user"/>
+            <column name="created_date" type="timestamp" />
+            <column name="updated_by" type="varchar(255)"
+                    remarks="name of the person who has updated user details"/>
+            <column name="updated_date" type="timestamp" />
+            
+        </createTable>
+        
+        
+        
+    </changeSet>
+    <changeSet author="prerana" id="2">
+        <addForeignKeyConstraint baseColumnNames="permission_id"
+                                 baseTableName="role_permission"
+                                 constraintName="fk_permission_id"
+
+
+                                 referencedColumnNames="id"
+                                 referencedTableName="permissions"/>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_role"
+                                 constraintName="fk_user_id"
+                                     
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="user_role"
+                                 constraintName="fk_role_id"
+
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+            
+    </changeSet>         
+</databaseChangeLog>
