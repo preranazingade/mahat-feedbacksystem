@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="rightNow" value="CURRENT_TIMESTAMP" dbms="mysql,mssql" />
+    <changeSet author="Prerana" id="user_insert_1">
+    
+        <insert tableName="user">    
+        
+            <column name="username" value="prerana"/>
+            <column name="fname" value="pre"/>
+            <column name="lname" value="Z"/>
+            <column name="phone_no" value="80506"/>
+            <column name="email_id" value="p@gmail.com"/>
+            <column name="password" value="1234"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+    </changeSet>
+    <changeSet author="Prerana" id="user_insert_2">
+            <insert tableName="user">    
+        
+            <column name="username" value="pooja"/>
+            <column name="fname" value="pooja"/>
+            <column name="lname" value="Z"/>
+            <column name="phone_no" value="8050609030"/>
+            <column name="email_id" value="p@gmail.com"/>
+            <column name="password" value="1288"/>
+            <column name="created_by" value="pooja"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pooja"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+    </changeSet>
+        <changeSet author="Prerana" id="role_in_1">
+         <insert tableName="role">    
+        
+            <column name="code" value="ADMIN"/>
+            <column name="name" value="admin"/>
+            <column name="description" value="network admin"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_in_2">
+        <insert tableName="role">    
+        
+            <column name="code" value="USER"/>
+            <column name="name" value="student_user"/>
+            <column name="description" value="students"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="permission_in_1">
+        <insert tableName="permissions">    
+        
+            <column name="code" value="CREATE"/>
+            <column name="name" value="create_user"/>
+            <column name="description" value="can create data "/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="permission_in_2">
+        <insert tableName="permissions">    
+        
+            <column name="code" value="RETRIEVE"/>
+            <column name="name" value="retrieve_user"/>
+            <column name="description" value="retrieve data from list"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="permission_in_3">
+        <insert tableName="permissions">    
+        
+            <column name="code" value="DELETE"/>
+            <column name="name" value="delete_user"/>
+            <column name="description" value="delete data of users"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="permission_in_4">
+        <insert tableName="permissions">    
+        
+            <column name="code" value="UPDATE"/>
+            <column name="name" value="update_user"/>
+            <column name="description" value="can update data "/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_perm_in_1">
+        <insert tableName="role_permission">    
+        
+            <column name="role_id" value="1"/>
+            <column name="permission_id" value="1"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_perm_in_2">
+        <insert tableName="role_permission">    
+        
+            <column name="role_id" value="1"/>
+            <column name="permission_id" value="2"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_perm_in_3">
+        <insert tableName="role_permission">    
+        
+            <column name="role_id" value="1"/>
+            <column name="permission_id" value="3"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_perm_in_4">
+        <insert tableName="role_permission">    
+        
+            <column name="role_id" value="1"/>
+            <column name="permission_id" value="4"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="role_perm_in_5">
+        <insert tableName="role_permission">    
+        
+            <column name="role_id" value="2"/>
+            <column name="permission_id" value="1"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="user_perm_in_1">
+        <insert tableName="user_role">    
+        
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="2"/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        </changeSet>
+        <changeSet author="Prerana" id="feedback_in_1">
+        <insert tableName="feedback_on">    
+        
+            <column name="user_id" value="1"/>
+            <column name="topic_facilitator_name" value="Verbal"/>
+            <column name="ratings" value="8"/>
+            <column name="comments" value="Verbal part of the session I found very useful for me to attend Tech Mahindra placement , Thank you MAHAT "/>
+            <column name="created_by" value="pre"/>
+            <column name="created_date" valueDate="${rightNow}"/>
+            <column name="updated_by" value="pre"/>
+            <column name="updated_date" valueDate="${rightNow}"/>
+        </insert>
+        
+    </changeSet>
+</databaseChangeLog>
